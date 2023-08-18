@@ -14,21 +14,25 @@
 #define EXTERN extern
 #endif
 
-typedef struct request_s {
+typedef struct
+{
   char type[16];
   char resource[256];
   size_t size;
 
-} request_t;
+} request;
 
-typedef struct response_s {
+typedef struct
+{
   char header[1024];
   size_t header_size;
   void *content;
   size_t content_size;
-} response_t;
+} response;
 
-EXTERN void parse_get_request(request_t *req, void *buffer);
-EXTERN void create_default_header(response_t *res);
+EXTERN void parse_get_request (const char *working_dir, request *req,
+                               void *buffer);
+EXTERN void create_ok_default_header (response *res);
+EXTERN void create_error_default_header (response *res);
 #undef EXTERN
 #endif

@@ -25,35 +25,38 @@
 
 #define MAX_READ_SIZE 1024
 #ifdef SYSLOG
-#define LOG_ERROR(str, opts...) syslog(LOG_ERR, str, opts);
+#define LOG_ERROR(str, opts...) syslog (LOG_ERR, str, opts);
 #else
-#define LOG_ERROR(str, opts...) printf(str, ##opts);
+#define LOG_ERROR(str, opts...) printf (str, ##opts);
 #define LOG LOG_ERROR
 #endif
-typedef struct page_s {
+typedef struct page_s
+{
   char *data;
   size_t size;
 } page_t;
 
-typedef struct server_s {
+typedef struct
+{
   int socket;
   const char *workspace;
-} server_info_t;
+} server_info;
 
-typedef struct connection_s {
+typedef struct
+{
   struct sockaddr address;
   socklen_t len;
   int fd;
-  server_info_t *server;
-} connection_t;
+  server_info *server;
+} connection;
 
-EXTERN server_info_t *server_init(const char *port, const char *workspace);
-EXTERN void server_deinit(server_info_t *s);
-EXTERN connection_t *server_accept_connection(server_info_t *s);
-EXTERN void server_close_connection(connection_t *connection);
-EXTERN size_t server_http_receive(connection_t *connection, request_t *request);
-EXTERN size_t server_http_send(connection_t *connection, response_t *response);
-page_t server_load_page(const char *filename);
-void server_dispose_page(page_t *page);
+EXTERN server_info *server_init (const char *port, const char *workspace);
+EXTERN void server_deinit (server_info *s);
+EXTERN connection *server_accept_connection (server_info *s);
+EXTERN void server_close_connection (connection *connection);
+EXTERN size_t server_http_receive (connection *connection, request *request);
+EXTERN size_t server_http_send (connection *connection, response *response);
+page_t server_load_page (const char *filename);
+void server_dispose_page (page_t *page);
 #undef EXTERN
 #endif
