@@ -13,4 +13,6 @@ jobs:
 
     steps:
     - name: make
-      run: make
+      run: |
+        ls -la
+        make
