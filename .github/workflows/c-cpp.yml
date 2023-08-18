@@ -14,5 +14,6 @@ jobs:
     steps:
     - name: make
       run: |
-        ls -la
+        pwd
+        ls -l
         make
