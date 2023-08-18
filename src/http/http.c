@@ -1,3 +1,9 @@
+/**
+ * @file http.c
+ * @author Elias Rammos <rammoselias@gmail.com>
+ * @version $Date$
+ */
+
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

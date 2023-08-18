@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file server.h
  * @author Elias Rammos <rammoselias@gmail.com>
  * @version $Date$
  */
@@ -56,7 +56,8 @@ EXTERN connection *server_accept_connection (server_info *s);
 EXTERN void server_close_connection (connection *connection);
 EXTERN size_t server_http_receive (connection *connection, request *request);
 EXTERN size_t server_http_send (connection *connection, response *response);
-page_t server_load_page (const char *filename);
-void server_dispose_page (page_t *page);
+EXTERN page_t server_load_page (const char *filename);
+EXTERN void server_dispose_page (page_t *page);
+
 #undef EXTERN
 #endif

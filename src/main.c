@@ -12,8 +12,6 @@ main (int argc, const char **argv)
 
   server_info *s = server_init ("8080", argv[1]);
 
-  struct sockaddr connected_client;
-  socklen_t addrlen = sizeof (connected_client);
   while (true)
     {
 
@@ -24,7 +22,6 @@ main (int argc, const char **argv)
       response res = { 0 };
       res.content = p.data;
       res.content_size = p.size;
-     printf("wtf is this %s\n",(char *) res.content);
       if (res.content)
         {
           create_ok_default_header (&res);

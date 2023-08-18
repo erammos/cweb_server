@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file http.h
  * @author Elias Rammos <rammoselias@gmail.com>
  * @version $Date$
  */
@@ -34,5 +34,6 @@ EXTERN void parse_get_request (const char *working_dir, request *req,
                                void *buffer);
 EXTERN void create_ok_default_header (response *res);
 EXTERN void create_error_default_header (response *res);
+
 #undef EXTERN
 #endif
